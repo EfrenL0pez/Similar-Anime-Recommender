@@ -4,6 +4,7 @@
 #include <chrono>
 #include <queue>
 #include <fstream>
+#include <unordered_set>
 #include "Anime.h"
 
 class RBTree
@@ -27,6 +28,7 @@ private:
 	bool balanced = false;
 	bool sortID = false;
 	Node* root = nullptr;
+	unordered_set<string> recommended;
 
 	bool CheckValidRecursive(Node* curr);
 	Node* RotLeft(Node* curr);
@@ -39,7 +41,7 @@ private:
 	Anime* FindRecursive(string title, Node* curr);
 	int TreeHeightRecursive(Node* curr);
 	bool IsHeightBalanced(Node* root, int& rootMax);
-	string& toLower(const string& title);
+	string toLower(const string& title);
 
 public:
 	bool IsBalanced();

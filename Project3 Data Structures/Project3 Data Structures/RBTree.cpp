@@ -431,12 +431,12 @@ Anime* RBTree::FindRecursive(string title, Node* curr)
 	{
 		return nullptr;
 	}
-	else if (toLower(title) < toLower(curr->anime.title))
+	else if (title < curr->anime.title)
 	{
 		Anime* temp = FindRecursive(title, curr->left);
 		return temp;
 	}
-	else if (toLower(title) > toLower(curr->anime.title))
+	else if (title > curr->anime.title)
 	{
 		Anime* temp = FindRecursive(title, curr->right);
 		return temp;
@@ -738,6 +738,8 @@ void RBTree::readfiles()
 
 void RBTree::displayinfo(string userInput) 
 {
+	auto start = chrono::high_resolution_clock::now();
+
 	toLower(userInput);
 	if (this->Find(userInput) == nullptr)
 	{
@@ -762,20 +764,25 @@ void RBTree::displayinfo(string userInput)
 			{
 				break;
 			}
-			if (userAnime.id == userAnime.related.at(i)->id)
+			if (userAnime.id == userAnime.related.at(i)->id || recommended.find(userAnime.related.at(i)->upperTitle) != recommended.end())
 			{
 				continue;
 			}
-			cout << "Title: " << userAnime.related.at(i)->title << endl;
+			cout << "Title: " << userAnime.related.at(i)->upperTitle << endl;
 			cout << "Genre(s): " << userAnime.related.at(i)->genre << "   Score: " << userAnime.related.at(i)->score << endl;
 			cout << "Description: " << userAnime.related.at(i)->description << endl;
 			cout << endl << endl;
+			recommended.insert(userAnime.related.at(i)->upperTitle);
 			counter++;
 		}
 	}
+	auto stop = std::chrono::high_resolution_clock::now();
+	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
+
+	cout << "Time to find an anime and its top 5 relations: " << duration.count() / 1000.0 << " seconds" << endl;
 }
 
-string& RBTree::toLower(const string& title) 
+string RBTree::toLower(const string& title) 
 {
 	string output = title;
 	for (int i = 0; i < title.length(); i++) 
