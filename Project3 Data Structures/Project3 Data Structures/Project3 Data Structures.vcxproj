@@ -145,8 +145,9 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Anime.cpp" />
+    <ClCompile Include="hashTable.cpp" />
+    <ClCompile Include="main.cpp" />
     <ClCompile Include="RBTree.cpp" />
-    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

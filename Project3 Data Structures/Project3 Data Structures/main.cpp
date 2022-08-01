@@ -7,8 +7,8 @@
 #include <utility>
 #include <algorithm>
 #include <chrono>
-#include "hashTable.h"
-#include "RBTree.h"
+#include "src/hashTable.h"
+#include "src/RBTree.h"
 using namespace std;
 
 int main()

@@ -18,7 +18,7 @@ void hashTable::readFiles()
     auto start = std::chrono::high_resolution_clock::now();
     ifstream stream;
     //reads anime data
-    stream.open("data/anime.csv");
+    stream.open("../data/anime.csv");
     if(stream.is_open())
     {
         //reads first line and ignores it
@@ -100,7 +100,7 @@ void hashTable::readFiles()
    
     stream.close();
    
-    stream.open("data/anime_anime.csv");
+    stream.open("../data/anime_anime.csv");
     if(stream.is_open())
     {
         string buffer;
@@ -211,7 +211,7 @@ hashTable::anime* hashTable::find(string id)
     {
         if(title != "")
         {
-            pair<string, string> p = make_pair(title, id);
+            pair p = make_pair(title, id);
             //makes the string a constant char pointer by using the function c_str to return the pointer to the string and casting it to a const char
             char* c = const_cast<char*>(title.c_str());
             dictionary[stoi(hash(c))].push_back(p);
@@ -295,7 +295,7 @@ hashTable::anime* hashTable::find(string id)
                     //skips titles that have already been recommended
                     if(recommended.count(r) == 0 && r != nullptr)
                     {
-                        cout << "Name: " << r->title << "\n" << " Genre: " << r->genre << " Score: " << r->score << endl;
+                        cout << "Name: " << r->title << " Genre: " << r->genre << " Score: " << r->score << endl;
                         cout << r->description << "\n\n";
                         recommended.insert(r);
                         c++;

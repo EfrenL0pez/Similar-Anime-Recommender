@@ -733,7 +733,7 @@ void RBTree::readfiles()
 	auto stop = std::chrono::high_resolution_clock::now();
 	auto duration = std::chrono::duration_cast<std::chrono::milliseconds>(stop - start);
 
-	cout << "Time to insert " << size << " elements and their relations into the Red Black Tree: " << (float)(duration.count()) / 1000 << " seconds" << endl;
+	cout << "Time to insert all anime and their relations: " << (duration.count() / 1000.0) << " seconds" << endl;
 }
 
 void RBTree::displayinfo(string userInput) 
