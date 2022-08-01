@@ -1,4 +1,4 @@
-#include "Anime.h"
+#include "src/Anime.h"
 Anime::Anime(string title, string upperTitle, int id, string description, string genre, string score) 
 {
 	this->title = title;

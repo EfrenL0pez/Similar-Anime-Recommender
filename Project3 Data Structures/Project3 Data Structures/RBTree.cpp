@@ -1,4 +1,4 @@
-#include "RBTree.h"
+#include "src/RBTree.h"
 
 
 RBTree::Node::Node(Anime* anime, Node* parent) 
@@ -672,7 +672,7 @@ void RBTree::readfiles()
 			}
 			
 			string upperTitle = title;
-			title = toLower(title);
+			//title = toLower(title);
 
 			Anime temp(title, upperTitle, stoi(id), synopsis, genres, score);
 			library.Insert(temp);
